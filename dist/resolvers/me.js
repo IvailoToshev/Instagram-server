@@ -35,14 +35,14 @@ let MeResolver = class MeResolver {
     }
 };
 __decorate([
-    (0, type_graphql_1.Query)(() => User_1.User, { nullable: true }),
-    __param(0, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Query(() => User_1.User, { nullable: true }),
+    __param(0, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], MeResolver.prototype, "me", null);
 MeResolver = __decorate([
-    (0, type_graphql_1.Resolver)()
+    type_graphql_1.Resolver()
 ], MeResolver);
 exports.MeResolver = MeResolver;
 //# sourceMappingURL=me.js.map

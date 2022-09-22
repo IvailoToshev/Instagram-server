@@ -40,30 +40,30 @@ const hello_1 = require("./resolvers/hello");
 const user_1 = require("./resolvers/user");
 const apollo_server_core_1 = require("apollo-server-core");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    const connection = yield (0, typeorm_1.createConnection)({
+    const connection = yield typeorm_1.createConnection({
         type: 'postgres',
-        database: 'postgres',
+        database: 'instagram',
         username: 'postgres',
-        password: 'postgres',
+        password: 'ivailopostgre05469ivo',
         logging: true,
         synchronize: true,
         migrations: [path_1.default.join(__dirname, "./migrations/*")],
         entities: [User_1.User, Post_1.Post, Message_1.Message, Likes_1.Likes, Comment_1.Comment]
     });
-    const schema = yield (0, type_graphql_1.buildSchema)({
+    const schema = yield type_graphql_1.buildSchema({
         resolvers: [user_1.UserResolver, post_1.PostResolver,
             messages_1.MessageResolver, confirmUser_1.ConfirmUserResolver, comment_1.CommentResolver,
             me_1.MeResolver, hello_1.HelloResolver, forgotPassword_1.forgotPasswordResolver],
         validate: false,
     });
-    const app = (0, express_1.default)();
+    const app = express_1.default();
     yield connection.runMigrations();
-    const RedisStore = (0, connect_redis_1.default)(express_session_1.default);
-    app.use((0, cors_1.default)({
+    const RedisStore = connect_redis_1.default(express_session_1.default);
+    app.use(cors_1.default({
         origin: "http://localhost:3000",
         credentials: true,
     }));
-    app.use((0, express_session_1.default)({
+    app.use(express_session_1.default({
         name: constants_1.COOKIE_NAME,
         store: new RedisStore({
             client: redis_1.redis,
@@ -84,11 +84,11 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
             req,
             res,
             redis: redis_1.redis,
-            userLoader: (0, createUserLoader_1.createUserLoader)(),
-            likesLoader: (0, createLikesLoader_1.createLikeLoader)()
+            userLoader: createUserLoader_1.createUserLoader(),
+            likesLoader: createLikesLoader_1.createLikeLoader()
         }),
         plugins: [
-            (0, apollo_server_core_1.ApolloServerPluginLandingPageGraphQLPlayground)({})
+            apollo_server_core_1.ApolloServerPluginLandingPageGraphQLPlayground({})
         ],
     });
     yield apolloServer.start();

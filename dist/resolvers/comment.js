@@ -29,25 +29,25 @@ const typeorm_1 = require("typeorm");
 let CommentInput = class CommentInput {
 };
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], CommentInput.prototype, "body", void 0);
 CommentInput = __decorate([
-    (0, type_graphql_1.InputType)()
+    type_graphql_1.InputType()
 ], CommentInput);
 exports.CommentInput = CommentInput;
 let PaginatedComments = class PaginatedComments {
 };
 __decorate([
-    (0, type_graphql_1.Field)(() => Comment_1.Comment),
+    type_graphql_1.Field(() => Comment_1.Comment),
     __metadata("design:type", Array)
 ], PaginatedComments.prototype, "comments", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", Boolean)
 ], PaginatedComments.prototype, "hasMore", void 0);
 PaginatedComments = __decorate([
-    (0, type_graphql_1.ObjectType)()
+    type_graphql_1.ObjectType()
 ], PaginatedComments);
 let CommentResolver = class CommentResolver {
     createComment(input, { req }) {
@@ -84,7 +84,7 @@ let CommentResolver = class CommentResolver {
             if (cursor) {
                 replacements.push(new Date(parseInt(cursor)));
             }
-            const comments = yield (0, typeorm_1.getConnection)().query(`
+            const comments = yield typeorm_1.getConnection().query(`
    // select all fields from the table
    select c.*, 
    from comment c
@@ -104,7 +104,7 @@ let CommentResolver = class CommentResolver {
             const isLiked = value !== null;
             const realValue = isLiked ? 1 : -1;
             const userId = req.session.userId;
-            (0, typeorm_1.getConnection)().query(`
+            typeorm_1.getConnection().query(`
    START TRANSACTION;
 
    insert into likes("userId", "commentId","value")
@@ -124,53 +124,53 @@ let CommentResolver = class CommentResolver {
     }
 };
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Comment_1.Comment, { nullable: true }),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)("input")),
-    __param(1, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => Comment_1.Comment, { nullable: true }),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg("input")),
+    __param(1, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CommentInput, Object]),
     __metadata("design:returntype", Promise)
 ], CommentResolver.prototype, "createComment", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Comment_1.Comment, { nullable: true }),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)('id', () => type_graphql_1.Int)),
-    __param(1, (0, type_graphql_1.Arg)('input')),
+    type_graphql_1.Mutation(() => Comment_1.Comment, { nullable: true }),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg('id', () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Arg('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, CommentInput]),
     __metadata("design:returntype", Promise)
 ], CommentResolver.prototype, "updateComment", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Boolean),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)("id", () => type_graphql_1.Int)),
-    __param(1, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => Boolean),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg("id", () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], CommentResolver.prototype, "deleteComment", null);
 __decorate([
-    (0, type_graphql_1.Query)(() => [Comment_1.Comment]),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)("limit", () => type_graphql_1.Int)),
-    __param(1, (0, type_graphql_1.Arg)("cursor", () => String, { nullable: true })),
+    type_graphql_1.Query(() => [Comment_1.Comment]),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg("limit", () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Arg("cursor", () => String, { nullable: true })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], CommentResolver.prototype, "comments", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Boolean),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)('commentId', () => type_graphql_1.Int)),
-    __param(1, (0, type_graphql_1.Arg)('value', () => type_graphql_1.Int)),
-    __param(2, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => Boolean),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg('commentId', () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Arg('value', () => type_graphql_1.Int)),
+    __param(2, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number, Object]),
     __metadata("design:returntype", Promise)
 ], CommentResolver.prototype, "likeComment", null);
 CommentResolver = __decorate([
-    (0, type_graphql_1.Resolver)(Comment_1.Comment)
+    type_graphql_1.Resolver(Comment_1.Comment)
 ], CommentResolver);
 exports.CommentResolver = CommentResolver;
 //# sourceMappingURL=comment.js.map

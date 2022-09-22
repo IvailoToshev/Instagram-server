@@ -3,8 +3,8 @@
     "host": "localhost",
     "port": 5432,
     "username": "postgres",
-    "password": "postgres",
-    "database": "postgres",
+    "password": "ivailopostgre05469ivo",
+    "database": "instagram",
     "entities": ["dist/entities/*.js"],
     "migrations": ["dist/migrations/*.js"]
   }

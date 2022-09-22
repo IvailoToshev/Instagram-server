@@ -29,11 +29,11 @@ const typeorm_1 = require("typeorm");
 let MessageInput = class MessageInput {
 };
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], MessageInput.prototype, "body", void 0);
 MessageInput = __decorate([
-    (0, type_graphql_1.InputType)()
+    type_graphql_1.InputType()
 ], MessageInput);
 exports.MessageInput = MessageInput;
 let MessageResolver = class MessageResolver {
@@ -64,7 +64,7 @@ let MessageResolver = class MessageResolver {
             const isLiked = value !== null;
             const realValue = isLiked ? 1 : null;
             const userId = req.session.userId;
-            (0, typeorm_1.getConnection)().query(`
+            typeorm_1.getConnection().query(`
    START TRANSACTION;
 
    insert into likes("userId", "messageId","value")
@@ -84,44 +84,44 @@ let MessageResolver = class MessageResolver {
     }
 };
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Message_1.Message, { nullable: true }),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)("input")),
-    __param(1, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => Message_1.Message, { nullable: true }),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg("input")),
+    __param(1, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [MessageInput, Object]),
     __metadata("design:returntype", Promise)
 ], MessageResolver.prototype, "createMessage", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Message_1.Message, { nullable: true }),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)('id', () => type_graphql_1.Int)),
-    __param(1, (0, type_graphql_1.Arg)('input')),
+    type_graphql_1.Mutation(() => Message_1.Message, { nullable: true }),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg('id', () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Arg('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, MessageInput]),
     __metadata("design:returntype", Promise)
 ], MessageResolver.prototype, "updateMessage", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Boolean),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)('id', () => type_graphql_1.Int)),
-    __param(1, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => Boolean),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg('id', () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], MessageResolver.prototype, "deleteMessage", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Boolean),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)('messageId', () => type_graphql_1.Int)),
-    __param(1, (0, type_graphql_1.Arg)('value', () => type_graphql_1.Int)),
-    __param(2, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => Boolean),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg('messageId', () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Arg('value', () => type_graphql_1.Int)),
+    __param(2, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number, Object]),
     __metadata("design:returntype", Promise)
 ], MessageResolver.prototype, "likeMessage", null);
 MessageResolver = __decorate([
-    (0, type_graphql_1.Resolver)(Message_1.Message)
+    type_graphql_1.Resolver(Message_1.Message)
 ], MessageResolver);
 exports.MessageResolver = MessageResolver;
 //# sourceMappingURL=messages.js.map

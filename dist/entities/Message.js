@@ -17,44 +17,44 @@ const Likes_1 = require("./Likes");
 let Message = class Message extends typeorm_1.BaseEntity {
 };
 __decorate([
-    (0, type_graphql_1.Field)(() => type_graphql_1.Int),
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    type_graphql_1.Field(() => type_graphql_1.Int),
+    typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Message.prototype, "id", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], Message.prototype, "body", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => type_graphql_1.Int),
-    (0, typeorm_1.Column)(),
+    type_graphql_1.Field(() => type_graphql_1.Int),
+    typeorm_1.Column(),
     __metadata("design:type", Number)
 ], Message.prototype, "creatorId", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => type_graphql_1.Int, { nullable: true }),
+    type_graphql_1.Field(() => type_graphql_1.Int, { nullable: true }),
     __metadata("design:type", Object)
 ], Message.prototype, "messageLikes", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => User_1.User),
-    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.message),
+    type_graphql_1.Field(() => User_1.User),
+    typeorm_1.ManyToOne(() => User_1.User, (user) => user.message),
     __metadata("design:type", User_1.User)
 ], Message.prototype, "sender", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => type_graphql_1.Int),
-    (0, typeorm_1.Column)(),
+    type_graphql_1.Field(() => type_graphql_1.Int),
+    typeorm_1.Column(),
     __metadata("design:type", Number)
 ], Message.prototype, "receiverId", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Likes_1.Likes, (likes) => likes.message),
+    typeorm_1.OneToMany(() => Likes_1.Likes, (likes) => likes.message),
     __metadata("design:type", Array)
 ], Message.prototype, "likes", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], Message.prototype, "receivedStatus", void 0);
 Message = __decorate([
-    (0, type_graphql_1.ObjectType)(),
-    (0, typeorm_1.Entity)()
+    type_graphql_1.ObjectType(),
+    typeorm_1.Entity()
 ], Message);
 exports.Message = Message;
 //# sourceMappingURL=Message.js.map

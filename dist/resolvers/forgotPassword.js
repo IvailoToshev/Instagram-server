@@ -36,23 +36,23 @@ let forgotPasswordResolver = class forgotPasswordResolver {
             if (!user) {
                 return "Incorrect email";
             }
-            const token = (0, uuid_1.v4)();
+            const token = uuid_1.v4();
             yield redis_1.redis.set(redisPrefixes_1.forgotPasswordPrefix + token, user.id, "ex", 60 * 60 * 24);
-            yield (0, sendEmail_1.sendEmail)(email, `http://localhost:3000/user/change-password/${token}`);
+            yield sendEmail_1.sendEmail(email, `http://localhost:3000/user/change-password/${token}`);
             return "Password changed successfully";
         });
     }
 };
 __decorate([
-    (0, type_graphql_1.Mutation)(() => String),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)("email")),
+    type_graphql_1.Mutation(() => String),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg("email")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], forgotPasswordResolver.prototype, "forgotPassword", null);
 forgotPasswordResolver = __decorate([
-    (0, type_graphql_1.Resolver)()
+    type_graphql_1.Resolver()
 ], forgotPasswordResolver);
 exports.forgotPasswordResolver = forgotPasswordResolver;
 //# sourceMappingURL=forgotPassword.js.map

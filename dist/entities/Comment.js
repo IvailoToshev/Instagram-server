@@ -18,46 +18,46 @@ const User_1 = require("./User");
 let Comment = class Comment extends typeorm_1.BaseEntity {
 };
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    type_graphql_1.Field(),
+    typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Comment.prototype, "id", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => type_graphql_1.Int),
-    (0, typeorm_1.Column)(),
+    type_graphql_1.Field(() => type_graphql_1.Int),
+    typeorm_1.Column(),
     __metadata("design:type", Number)
 ], Comment.prototype, "creatorId", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => User_1.User),
-    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.comment),
+    type_graphql_1.Field(() => User_1.User),
+    typeorm_1.ManyToOne(() => User_1.User, (user) => user.comment),
     __metadata("design:type", User_1.User)
 ], Comment.prototype, "creator", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => Post_1.Post),
-    (0, typeorm_1.OneToMany)(() => Post_1.Post, (post) => post.comment),
+    type_graphql_1.Field(() => Post_1.Post),
+    typeorm_1.OneToMany(() => Post_1.Post, (post) => post.comment),
     __metadata("design:type", Array)
 ], Comment.prototype, "post", void 0);
 __decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
+    type_graphql_1.Field({ nullable: true }),
     __metadata("design:type", String)
 ], Comment.prototype, "body", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.CreateDateColumn)(),
+    type_graphql_1.Field(),
+    typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
 ], Comment.prototype, "createdAt", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.UpdateDateColumn)(),
+    type_graphql_1.Field(),
+    typeorm_1.UpdateDateColumn(),
     __metadata("design:type", Date)
 ], Comment.prototype, "updatedAt", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Likes_1.Likes, (likes) => likes.comment),
+    typeorm_1.OneToMany(() => Likes_1.Likes, (likes) => likes.comment),
     __metadata("design:type", Array)
 ], Comment.prototype, "likes", void 0);
 Comment = __decorate([
-    (0, type_graphql_1.ObjectType)(),
-    (0, typeorm_1.Entity)()
+    type_graphql_1.ObjectType(),
+    typeorm_1.Entity()
 ], Comment);
 exports.Comment = Comment;
 //# sourceMappingURL=Comment.js.map

@@ -14,7 +14,7 @@ const redisPrefixes_1 = require("../prefixes/redisPrefixes");
 const redis_1 = require("../redis");
 const uuid_1 = require("uuid");
 const createConfirmationUrl = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    const token = (0, uuid_1.v4)();
+    const token = uuid_1.v4();
     redis_1.redis.set(redisPrefixes_1.confirmUserPrefix + token, userId, "ex", 60 * 60 * 24);
     return `http://localhost:3000/user/confirm/${token}`;
 });

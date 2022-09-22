@@ -39,14 +39,14 @@ let ConfirmUserResolver = class ConfirmUserResolver {
     }
 };
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Boolean),
-    __param(0, (0, type_graphql_1.Arg)("token")),
+    type_graphql_1.Mutation(() => Boolean),
+    __param(0, type_graphql_1.Arg("token")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ConfirmUserResolver.prototype, "confirmUser", null);
 ConfirmUserResolver = __decorate([
-    (0, type_graphql_1.Resolver)()
+    type_graphql_1.Resolver()
 ], ConfirmUserResolver);
 exports.ConfirmUserResolver = ConfirmUserResolver;
 //# sourceMappingURL=confirmUser.js.map

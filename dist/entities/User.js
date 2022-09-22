@@ -20,81 +20,81 @@ const class_validator_1 = require("class-validator");
 let User = class User extends typeorm_1.BaseEntity {
 };
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    type_graphql_1.Field(),
+    typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], User.prototype, "id", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, class_validator_1.MinLength)(6),
-    (0, typeorm_1.Column)({ unique: true }),
+    type_graphql_1.Field(),
+    class_validator_1.MinLength(6),
+    typeorm_1.Column({ unique: true }),
     __metadata("design:type", String)
 ], User.prototype, "username", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.Column)({ unique: true }),
+    type_graphql_1.Field(),
+    typeorm_1.Column({ unique: true }),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => type_graphql_1.Int, { defaultValue: 0 }),
-    (0, typeorm_1.Column)(),
+    type_graphql_1.Field(() => type_graphql_1.Int, { defaultValue: 0 }),
+    typeorm_1.Column(),
     __metadata("design:type", Number)
 ], User.prototype, "followers", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    (0, class_validator_1.MinLength)(6),
+    typeorm_1.Column(),
+    class_validator_1.MinLength(6),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => String),
-    (0, typeorm_1.CreateDateColumn)(),
+    type_graphql_1.Field(() => String),
+    typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
 ], User.prototype, "createdAt", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => String),
-    (0, typeorm_1.UpdateDateColumn)(),
+    type_graphql_1.Field(() => String),
+    typeorm_1.UpdateDateColumn(),
     __metadata("design:type", Date)
 ], User.prototype, "updatedAt", void 0);
 __decorate([
-    (0, typeorm_1.Column)("bool", { default: false }),
+    typeorm_1.Column("bool", { default: false }),
     __metadata("design:type", Boolean)
 ], User.prototype, "confirmed", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Post_1.Post, (post) => post.creator),
+    typeorm_1.OneToMany(() => Post_1.Post, (post) => post.creator),
     __metadata("design:type", Array)
 ], User.prototype, "posts", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Likes_1.Likes, (likes) => likes.user),
+    typeorm_1.OneToMany(() => Likes_1.Likes, (likes) => likes.user),
     __metadata("design:type", Array)
 ], User.prototype, "likes", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
+    type_graphql_1.Field(),
+    typeorm_1.Column(),
     __metadata("design:type", String)
 ], User.prototype, "gender", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Comment_1.Comment, (comment) => comment.creator),
+    typeorm_1.OneToMany(() => Comment_1.Comment, (comment) => comment.creator),
     __metadata("design:type", Array)
 ], User.prototype, "comment", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", Number)
 ], User.prototype, "profileId", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Message_1.Message, (message) => message.sender),
+    typeorm_1.OneToMany(() => Message_1.Message, (message) => message.sender),
     __metadata("design:type", Array)
 ], User.prototype, "message", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], User.prototype, "bio", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => Boolean, { defaultValue: false }),
+    type_graphql_1.Field(() => Boolean, { defaultValue: false }),
     __metadata("design:type", Boolean)
 ], User.prototype, "active", void 0);
 User = __decorate([
-    (0, type_graphql_1.ObjectType)(),
-    (0, typeorm_1.Entity)()
+    type_graphql_1.ObjectType(),
+    typeorm_1.Entity()
 ], User);
 exports.User = User;
 //# sourceMappingURL=User.js.map

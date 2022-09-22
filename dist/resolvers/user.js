@@ -37,47 +37,47 @@ const typeorm_1 = require("typeorm");
 let UserInput = class UserInput {
 };
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], UserInput.prototype, "username", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], UserInput.prototype, "email", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], UserInput.prototype, "password", void 0);
 UserInput = __decorate([
-    (0, type_graphql_1.InputType)()
+    type_graphql_1.InputType()
 ], UserInput);
 exports.UserInput = UserInput;
 let ErrorField = class ErrorField {
 };
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], ErrorField.prototype, "field", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
+    type_graphql_1.Field(),
     __metadata("design:type", String)
 ], ErrorField.prototype, "message", void 0);
 ErrorField = __decorate([
-    (0, type_graphql_1.ObjectType)()
+    type_graphql_1.ObjectType()
 ], ErrorField);
 exports.ErrorField = ErrorField;
 let UserResponse = class UserResponse {
 };
 __decorate([
-    (0, type_graphql_1.Field)(() => [ErrorField], { nullable: true }),
+    type_graphql_1.Field(() => [ErrorField], { nullable: true }),
     __metadata("design:type", Array)
 ], UserResponse.prototype, "errors", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => User_1.User, { nullable: true }),
+    type_graphql_1.Field(() => User_1.User, { nullable: true }),
     __metadata("design:type", User_1.User)
 ], UserResponse.prototype, "user", void 0);
 UserResponse = __decorate([
-    (0, type_graphql_1.ObjectType)()
+    type_graphql_1.ObjectType()
 ], UserResponse);
 exports.UserResponse = UserResponse;
 let UserResolver = class UserResolver {
@@ -86,7 +86,7 @@ let UserResolver = class UserResolver {
             const hashedPassword = yield argon2_1.default.hash(options.password);
             let user;
             try {
-                const result = yield (0, typeorm_1.getConnection)()
+                const result = yield typeorm_1.getConnection()
                     .createQueryBuilder()
                     .insert()
                     .into(User_1.User)
@@ -111,7 +111,7 @@ let UserResolver = class UserResolver {
                     };
                 }
             }
-            yield (0, sendEmail_1.sendEmail)(email, yield (0, createConfirmationUrl_1.createConfirmationUrl)(user.id));
+            yield sendEmail_1.sendEmail(email, yield createConfirmationUrl_1.createConfirmationUrl(user.id));
             ctx.req.session.userId = user.id;
             return {
                 user
@@ -236,51 +236,51 @@ let UserResolver = class UserResolver {
     }
 };
 __decorate([
-    (0, type_graphql_1.Mutation)(() => UserResponse),
-    __param(0, (0, type_graphql_1.Arg)('options', () => String)),
-    __param(1, (0, type_graphql_1.Arg)('email')),
-    __param(2, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => UserResponse),
+    __param(0, type_graphql_1.Arg('options', () => String)),
+    __param(1, type_graphql_1.Arg('email')),
+    __param(2, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [UserInput, String, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "register", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => UserResponse),
-    __param(0, (0, type_graphql_1.Arg)("usernameOrEmail")),
-    __param(1, (0, type_graphql_1.Arg)('password', () => String)),
-    __param(2, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => UserResponse),
+    __param(0, type_graphql_1.Arg("usernameOrEmail")),
+    __param(1, type_graphql_1.Arg('password', () => String)),
+    __param(2, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "login", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => Boolean),
-    __param(0, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => Boolean),
+    __param(0, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], UserResolver.prototype, "logout", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => UserResponse, { nullable: true }),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)("token")),
-    __param(1, (0, type_graphql_1.Arg)("newPassword")),
-    __param(2, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => UserResponse, { nullable: true }),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg("token")),
+    __param(1, type_graphql_1.Arg("newPassword")),
+    __param(2, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "changePassword", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(() => UserResponse, { nullable: true }),
-    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
-    __param(0, (0, type_graphql_1.Arg)('change')),
-    __param(1, (0, type_graphql_1.Ctx)()),
+    type_graphql_1.Mutation(() => UserResponse, { nullable: true }),
+    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    __param(0, type_graphql_1.Arg('change')),
+    __param(1, type_graphql_1.Ctx()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [UserInput, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "changeUsername", null);
 UserResolver = __decorate([
-    (0, type_graphql_1.Resolver)(User_1.User)
+    type_graphql_1.Resolver(User_1.User)
 ], UserResolver);
 exports.UserResolver = UserResolver;
 //# sourceMappingURL=user.js.map
