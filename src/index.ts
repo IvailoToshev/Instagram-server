@@ -33,8 +33,8 @@ const main = async () => {
     const connection = await createConnection({
         type:'postgres',
         database: 'instagram',
-        username: 'postgres',
-        password: 'ivailopostgre05469ivo',
+        username: 'username',
+        password: 'password',
         logging: true,
         synchronize: true,
         migrations: [path.join(__dirname, "./migrations/*")],
