@@ -10,4 +10,5 @@ ExpressJS
 GraphQL / ApolloGraphQL
 TypeGraphqQl
 TypeOrm
+Redis
 PostgreSQL
